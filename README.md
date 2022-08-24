@@ -12,7 +12,7 @@ Contact email is [admin@lindseyk.dev](mailto:admin@lindseyk.dev)
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
-## 🙏 Many thanks & appreciation to the [author & creator](https://github.com/arifszn/gitprofile) of GitProfile. 🎉
+### 🙏 Many thanks & appreciation to the [author & creator](https://github.com/arifszn/gitprofile) of ___GitProfile___. 🎉
 
 ---
 
