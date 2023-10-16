@@ -5,7 +5,7 @@ Think of it as your own personal GitHub dashboard.
 
 Live link can be found [here](https://my-gitprofile.vercel.app/)
 
-![](https://res.cloudinary.com/codelikeagirl29/image/upload/v1659947445/Portfolio_of_Lindsey_Howard_nz30ix.png)
+![](https://res.cloudinary.com/codelikeagirl29/image/upload/v1697492109/projects/GitPortfolio-of-Lindsey-Howard_iryhku.png)
 
 Contact email is [admin@lindseyk.dev](mailto:admin@lindseyk.dev)
 
