@@ -44,11 +44,17 @@ function App() {
           'Bootstrap',
         ],
         experiences: [
+             {
+            company: 'Freelance',
+            position: 'Web Developer',
+            from: 'April 2021',
+            to: 'present',
+          },
           {
             company: 'Tristate Media',
             position: 'Marketing & Sales Representative',
             from: 'Oct 2016',
-            to: 'Present',
+            to: 'April 2021',
           },
           {
             company: 'Navy Federal Credit Union',
