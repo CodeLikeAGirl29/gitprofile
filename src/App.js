@@ -20,7 +20,7 @@ function App() {
           twitter: 'dev_lindseyk',
           facebook: 'codelikeagirl91',
           instagram: 'fiercely.lindseyy',
-          dribbble: '',
+          dribbble: 'codelikeagirl91',
           behance: '',
           medium: 'lindseykdev',
           dev: '',
