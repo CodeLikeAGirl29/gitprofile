@@ -9,7 +9,7 @@ function App() {
         github: {
           username: 'codelikeagirl29', // Your GitHub org/user name. (Required)
           sortBy: 'updated', // stars | updated
-          limit: 8, // How many projects to display.
+          limit: 10, // How many projects to display.
           exclude: {
             forks: false, // Forked projects will not be displayed if set to true.
             projects: [], // These projects will not be displayed. example: ['my-project1', 'my-project2']
@@ -92,7 +92,7 @@ function App() {
           snippetVersion: 6,
         },
         themeConfig: {
-          defaultTheme: 'emerald',
+          defaultTheme: 'halloween',
 
           // Hides the theme change switch
           // Useful if you want to support a single color mode
@@ -112,7 +112,6 @@ function App() {
             'corporate',
             'synthwave',
             'retro',
-            'cyberpunk',
             'valentine',
             'halloween',
             'garden',
