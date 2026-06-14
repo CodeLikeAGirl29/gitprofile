@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="sunsetCoral">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lindsey Howard — Developer Profile</title>
+  <meta name="description"
+    content="GitHub profile and project dashboard for Lindsey Howard — web designer & developer on Florida's Emerald Coast." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ---------- Theme tokens ---------- */
+    :root,
+    [data-theme="sunsetCoral"] {
+      --bg: #FBF5EA;
+      --surface: #FFFFFF;
+      --text: #241712;
+      --muted: #6F5B52;
+      --border: rgba(36, 23, 18, .12);
+      --primary: #E8654E;
+      --accent: #E9A23B;
+      --cta: #CB4730;
+      --cta-h: #B23C28;
+      --on-cta: #fff;
+      --ring: #11808C;
+    }
+
+    [data-theme="emeraldCoast"] {
+      --bg: #FBFAF6;
+      --surface: #FFFFFF;
+      --text: #08201F;
+      --muted: #4F6360;
+      --border: rgba(8, 32, 31, .12);
+      --primary: #0F8A6E;
+      --accent: #E9A23B;
+      --cta: #0E7A60;
+      --cta-h: #0B6450;
+      --on-cta: #fff;
+      --ring: #1BB68F;
+    }
+
+    [data-theme="plumDusk"] {
+      --bg: #FBF3F1;
+      --surface: #FFFFFF;
+      --text: #241320;
+      --muted: #6E5560;
+      --border: rgba(36, 19, 32, .12);
+      --primary: #9F4A74;
+      --accent: #F4B740;
+      --cta: #8A3E64;
+      --cta-h: #743253;
+      --on-cta: #fff;
+      --ring: #EC6A52;
+    }
+
+    [data-theme="midnight"] {
+      --bg: #14110F;
+      --surface: #1E1A17;
+      --text: #F3E9E2;
+      --muted: #C7A595;
+      --border: rgba(255, 255, 255, .12);
+      --primary: #F2876F;
+      --accent: #F4B740;
+      --cta: #E8654E;
+      --cta-h: #CB4730;
+      --on-cta: #fff;
+      --ring: #36B3A8;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Hanken Grotesk", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background .3s, color .3s;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      margin: 0;
+      line-height: 1.05;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding-inline: clamp(20px, 5vw, 48px);
+    }
+
+    .mono {
+      font-family: "JetBrains Mono", monospace;
+    }
+
+    /* ---------- Nav ---------- */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-in {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .brand {
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: .5em;
+    }
+
+    .brand .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .nav-right a.studio {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: .9rem;
+      color: var(--muted);
+    }
+
+    .nav-right a.studio:hover {
+      color: var(--primary);
+    }
+
+    .swatches {
+      display: flex;
+      gap: .4rem;
+      align-items: center;
+    }
+
+    .sw {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      cursor: pointer;
+      padding: 0;
+      transition: transform .15s, border-color .15s;
+    }
+
+    .sw:hover {
+      transform: scale(1.12);
+    }
+
+    .sw[aria-pressed="true"] {
+      border-color: var(--text);
+      transform: scale(1.12);
+    }
+
+    .sw.s1 {
+      background: linear-gradient(135deg, #E8654E, #E9A23B);
+    }
+
+    .sw.s2 {
+      background: linear-gradient(135deg, #0F8A6E, #1BB68F);
+    }
+
+    .sw.s3 {
+      background: linear-gradient(135deg, #9F4A74, #F4B740);
+    }
+
+    .sw.s4 {
+      background: linear-gradient(135deg, #14110F, #F2876F);
+    }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5em;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: .95rem;
+      padding: .75em 1.4em;
+      border-radius: 999px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: transform .2s, background .2s, color .2s, border-color .2s;
+    }
+
+    .btn-primary {
+      background: var(--cta);
+      color: var(--on-cta);
+    }
+
+    .btn-primary:hover {
+      background: var(--cta-h);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      padding: clamp(40px, 6vw, 72px) 0 clamp(28px, 4vw, 48px);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: clamp(20px, 4vw, 40px);
+      align-items: center;
+    }
+
+    @media (max-width:640px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+      }
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 24px;
+      object-fit: cover;
+      border: 3px solid var(--surface);
+      box-shadow: 0 16px 40px -20px rgba(0, 0, 0, .5);
+      background: var(--surface);
+    }
+
+    .eyebrow {
+      font-family: "JetBrains Mono", monospace;
+      font-size: .74rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: .6em;
+    }
+
+    @media (max-width:640px) {
+      .eyebrow {
+        justify-content: center;
+      }
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 2px;
+      background: var(--primary);
+      display: inline-block;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      margin: .6rem 0 .5rem;
+    }
+
+    .hero .role {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero .bio {
+      color: var(--muted);
+      max-width: 52ch;
+      margin: 0 0 1.4rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: .8rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width:640px) {
+      .hero-cta {
+        justify-content: center;
+      }
+    }
+
+    .stats {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1.8rem;
+    }
+
+    @media (max-width:640px) {
+      .stats {
+        justify-content: center;
+      }
+    }
+
+    .stat .n {
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+
+    .stat .l {
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    .socials {
+      display: flex;
+      gap: .7rem;
+      margin-top: 1.4rem;
+    }
+
+    @media (max-width:640px) {
+      .socials {
+        justify-content: center;
+      }
+    }
+
+    .socials a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      color: var(--text);
+      transition: .2s;
+    }
+
+    .socials a:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .socials svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    /* ---------- Sections ---------- */
+    section {
+      padding: clamp(36px, 5vw, 56px) 0;
+    }
+
+    .sec-head {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .sec-head h2 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+    }
+
+    .sec-head .count {
+      font-family: "JetBrains Mono", monospace;
+      font-size: .85rem;
+      color: var(--muted);
+    }
+
+    hr.line {
+      border: 0;
+      height: 1px;
+      background: var(--border);
+      margin: 0;
+    }
+
+    /* skills */
+    .skills {
+      display: flex;
+      gap: .6rem;
+      flex-wrap: wrap;
+    }
+
+    .skill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: .5em 1em;
+      font-size: .9rem;
+      font-weight: 500;
+    }
+
+    /* projects */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(14px, 1.8vw, 20px);
+    }
+
+    @media (max-width:860px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width:560px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      transition: transform .2s, box-shadow .2s;
+      min-height: 170px;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px -24px rgba(0, 0, 0, .45);
+    }
+
+    .card .repo {
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      word-break: break-word;
+    }
+
+    .card .desc {
+      color: var(--muted);
+      font-size: .9rem;
+      margin: .5rem 0 1rem;
+      flex: 1;
+    }
+
+    .card .meta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-family: "JetBrains Mono", monospace;
+      font-size: .74rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      align-items: center;
+    }
+
+    .card .meta .lang::before {
+      content: "";
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-right: .4em;
+      vertical-align: middle;
+    }
+
+    .card .links {
+      display: flex;
+      gap: .5rem;
+    }
+
+    .card .links a {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: .82rem;
+      padding: .45em .9em;
+      border-radius: 999px;
+      transition: .2s;
+    }
+
+    .card .links .live {
+      background: var(--cta);
+      color: var(--on-cta);
+    }
+
+    .card .links .live:hover {
+      background: var(--cta-h);
+    }
+
+    .card .links .code {
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .card .links .code:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .status {
+      color: var(--muted);
+      font-size: .95rem;
+      padding: 1rem 0;
+    }
+
+    .status a {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* timeline */
+    .timeline {
+      display: grid;
+      gap: 0;
+    }
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 1.4rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    @media (max-width:560px) {
+      .tl-item {
+        grid-template-columns: 1fr;
+        gap: .3rem;
+      }
+    }
+
+    .tl-item:last-child {
+      border-bottom: 0;
+    }
+
+    .tl-when {
+      font-family: "JetBrains Mono", monospace;
+      font-size: .8rem;
+      color: var(--muted);
+      padding-top: .2rem;
+    }
+
+    .tl-what .t {
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .tl-what .w {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: .9rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0 40px;
+      color: var(--muted);
+      font-family: "JetBrains Mono", monospace;
+      font-size: .8rem;
+    }
+
+    .foot-in {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--ring);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      * {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="nav">
+    <div class="wrap nav-in">
+      <a class="brand" href="#"><span class="dot" aria-hidden="true"></span>Lindsey Howard</a>
+      <div class="nav-right">
+        <a class="studio" id="studioLink" href="#" target="_blank" rel="noopener">Studio&nbsp;↗</a>
+        <div class="swatches" role="group" aria-label="Color theme">
+          <button class="sw s1" data-theme="sunsetCoral" title="Sunset Coral" aria-pressed="true"></button>
+          <button class="sw s2" data-theme="emeraldCoast" title="Emerald Coast" aria-pressed="false"></button>
+          <button class="sw s3" data-theme="plumDusk" title="Plum Dusk" aria-pressed="false"></button>
+          <button class="sw s4" data-theme="midnight" title="Midnight" aria-pressed="false"></button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <img class="avatar" id="avatar" alt="" src="" width="120" height="120" />
+        <div>
+          <span class="eyebrow" id="eyebrow">Emerald Coast, FL</span>
+          <h1 id="name">Lindsey Howard</h1>
+          <div class="role" id="role">Web Designer &amp; Developer</div>
+          <p class="bio" id="bio"></p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" id="ghLink" href="#" target="_blank" rel="noopener">View GitHub ↗</a>
+            <a class="btn btn-ghost" id="hireLink" href="#" target="_blank" rel="noopener">Work with me</a>
+          </div>
+          <div class="stats" id="stats"></div>
+          <div class="socials" id="socials"></div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="line" />
+
+    <section>
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Skills</h2>
+        </div>
+        <div class="skills" id="skills"></div>
+      </div>
+    </section>
+
+    <hr class="line" />
+
+    <section>
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Projects</h2><span class="count" id="projCount"></span>
+        </div>
+        <div class="grid" id="projects"></div>
+        <div class="status" id="projStatus">Loading projects…</div>
+      </div>
+    </section>
+
+    <hr class="line" />
+
+    <section>
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Experience</h2>
+        </div>
+        <div class="timeline" id="experience"></div>
+      </div>
+    </section>
+
+    <hr class="line" />
+
+    <section>
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Education</h2>
+        </div>
+        <div class="timeline" id="education"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot-in">
+      <span>© <span id="year"></span> Lindsey Howard · Built from scratch, no template</span>
+      <span>Data live from the <a href="#" id="apiLink" target="_blank" rel="noopener">GitHub API</a></span>
+    </div>
+  </footer>
+
+  <script>
+    /* =====================================================================
+       CONFIG — edit this block, everything else renders from it.
+       ===================================================================== */
+    const CONFIG = {
+      username: 'codelikeagirl29',
+      role: 'Web Designer & Developer',
+      location: 'Emerald Coast, FL',
+      fallbackBio: 'Web designer and developer on Florida’s Gulf Coast. I build custom websites and branding for small businesses — design and code, start to finish.',
+      studioUrl: 'https://my-freelancer-profile.vercel.app/',
+      social: {
+        linkedin: 'https://www.linkedin.com/in/lindsey-howard/',
+        medium: 'https://medium.com/@lindseykdev',
+        email: 'lindseykdev@gmail.com',
+      },
+      skills: ['React', 'Next.js', 'JavaScript', 'React Native', 'Node.js', 'Express',
+        'PostgreSQL', 'MongoDB', 'RESTful API', 'Tailwind', 'SASS/SCSS', 'CSS', 'Git', 'UI / Branding'],
+      experiences: [
+        {from: '2021', to: 'present', title: 'Web Designer & Developer', where: 'Freelance'},
+        {from: '2016', to: '2021', title: 'Marketing & Sales Representative', where: 'Tristate Media'},
+        {from: '2020', to: '2020', title: 'Software Developer Intern', where: 'Navy Federal Credit Union'},
+      ],
+      education: [
+        {from: '2023', to: '2024', title: 'Frontend Development Certificate', where: 'Altcademy'},
+        {from: '2021', to: '2022', title: 'Full-Stack (MERN) Certificate', where: 'Nucamp'},
+        {from: '2020', to: '2021', title: 'Software Development Certificate', where: 'Thinkful'},
+        {from: '2023', to: '2023', title: 'Digital Marketing Certificate', where: 'Google'},
+      ],
+      projects: {sortBy: 'updated', limit: 9, excludeForks: true, exclude: []},
+    };
+
+    /* ---------- helpers ---------- */
+    const $ = (id) => document.getElementById(id);
+    const esc = (s) => (s || '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
+
+    /* ---------- static config render ---------- */
+    $('year').textContent = new Date().getFullYear();
+    $('role').textContent = CONFIG.role;
+    $('eyebrow').textContent = CONFIG.location;
+    $('bio').textContent = CONFIG.fallbackBio;
+    $('ghLink').href = 'https://github.com/' + CONFIG.username;
+    $('apiLink').href = 'https://api.github.com/users/' + CONFIG.username + '/repos';
+    $('studioLink').href = CONFIG.studioUrl;
+    $('hireLink').href = CONFIG.studioUrl;
+
+    $('skills').innerHTML = CONFIG.skills.map(s => `<span class="skill">${esc(s)}</span>`).join('');
+
+    const tl = (items) => items.map(i => `
+  <div class="tl-item">
+    <div class="tl-when">${esc(i.from)} — ${esc(i.to)}</div>
+    <div class="tl-what"><div class="t">${esc(i.title)}</div><div class="w">${esc(i.where)}</div></div>
+  </div>`).join('');
+    $('experience').innerHTML = tl(CONFIG.experiences);
+    $('education').innerHTML = tl(CONFIG.education);
+
+    /* ---------- socials ---------- */
+    const ICONS = {
+      github: '<path d="M12 2A10 10 0 0 0 8.8 21.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5a3.9 3.9 0 0 1 1-2.7 3.6 3.6 0 0 1 .1-2.7s.8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .1.4.6 1.4.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.8v2.6c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"/>',
+      linkedin: '<path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14ZM8.3 18v-8H5.7v8h2.6ZM7 8.8a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm11 9.2v-4.4c0-2.4-1.3-3.5-3-3.5a2.6 2.6 0 0 0-2.3 1.3V10H10v8h2.6v-4.2c0-1.1.2-2.2 1.6-2.2s1.4 1.3 1.4 2.3V18H18Z"/>',
+      medium: '<path d="M4 7.5a.8.8 0 0 0-.3-.7L2 5.1V5h4.8l3.7 8.1L13.8 5H18v.1l-1.4 1.4a.4.4 0 0 0-.2.4v9.2a.4.4 0 0 0 .2.4l1.4 1.4v.1h-6.9v-.1l1.5-1.4c.1-.2.1-.2.1-.5V8l-4 9.6h-.6L3.4 8v6.4c0 .4.1.7.4 1l1.9 2.3v.1H0v-.1l1.9-2.3a1 1 0 0 0 .3-1V7.5Z"/>',
+      email: '<path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm9 7 8-5H4l8 5Zm0 2L4 9v8h16V9l-8 5Z"/>',
+    };
+    function socialLink(href, key, label) {
+      return `<a href="${href}" target="_blank" rel="noopener" aria-label="${label}"><svg viewBox="0 0 24 24" fill="currentColor">${ICONS[key]}</svg></a>`;
+    }
+    $('socials').innerHTML = [
+      socialLink('https://github.com/' + CONFIG.username, 'github', 'GitHub'),
+      CONFIG.social.linkedin ? socialLink(CONFIG.social.linkedin, 'linkedin', 'LinkedIn') : '',
+      CONFIG.social.medium ? socialLink(CONFIG.social.medium, 'medium', 'Medium') : '',
+      CONFIG.social.email ? socialLink('mailto:' + CONFIG.social.email, 'email', 'Email') : '',
+    ].join('');
+
+    /* ---------- theme switcher (in-memory; add localStorage when self-hosted) ---------- */
+    document.querySelectorAll('.sw').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.documentElement.dataset.theme = btn.dataset.theme;
+        document.querySelectorAll('.sw').forEach(b => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+      });
+    });
+
+    /* ---------- live GitHub data ---------- */
+    async function loadGitHub() {
+      // Profile (avatar + stats)
+      try {
+        const u = await fetch('https://api.github.com/users/' + CONFIG.username).then(r => {if (!r.ok) throw 0; return r.json();});
+        if (u.avatar_url) $('avatar').src = u.avatar_url;
+        $('avatar').alt = (u.name || CONFIG.username) + ' avatar';
+        if (u.name) {$('name').textContent = u.name;}
+        if (u.bio) {$('bio').textContent = u.bio;}
+        $('stats').innerHTML = [
+          ['repos', u.public_repos],
+          ['followers', u.followers],
+          ['following', u.following],
+        ].map(([l, n]) => `<div class="stat"><div class="n">${n ?? '—'}</div><div class="l">${l}</div></div>`).join('');
+      } catch (e) { /* non-fatal — keep config defaults */}
+
+      // Repos
+      const status = $('projStatus');
+      try {
+        const repos = await fetch(`https://api.github.com/users/${CONFIG.username}/repos?per_page=100&sort=${CONFIG.projects.sortBy}`)
+          .then(r => {if (!r.ok) throw new Error(r.status); return r.json();});
+
+        let list = repos
+          .filter(r => !(CONFIG.projects.excludeForks && r.fork))
+          .filter(r => !CONFIG.projects.exclude.includes(r.name));
+
+        if (CONFIG.projects.sortBy === 'stars') {
+          list.sort((a, b) => b.stargazers_count - a.stargazers_count);
+        } // 'updated' already sorted by the API
+
+        // total stars stat
+        const totalStars = repos.reduce((s, r) => s + (r.stargazers_count || 0), 0);
+        if ($('stats').children.length) {
+          $('stats').insertAdjacentHTML('beforeend',
+            `<div class="stat"><div class="n">${totalStars}</div><div class="l">stars earned</div></div>`);
+        }
+
+        list = list.slice(0, CONFIG.projects.limit);
+        $('projCount').textContent = `${list.length} shown`;
+
+        $('projects').innerHTML = list.map(r => {
+          const live = r.homepage ? `<a class="live" href="${esc(r.homepage)}" target="_blank" rel="noopener">Live ↗</a>` : '';
+          const lang = r.language ? `<span class="lang">${esc(r.language)}</span>` : '';
+          return `<article class="card">
+        <div class="repo">${esc(r.name)}</div>
+        <div class="desc">${esc(r.description) || 'No description yet.'}</div>
+        <div class="meta">${lang}<span>★ ${r.stargazers_count}</span><span>⑂ ${r.forks_count}</span></div>
+        <div class="links">${live}<a class="code" href="${esc(r.html_url)}" target="_blank" rel="noopener">Code ↗</a></div>
+      </article>`;
+        }).join('');
+
+        status.style.display = list.length ? 'none' : 'block';
+        if (!list.length) status.textContent = 'No public projects to show yet.';
+      } catch (err) {
+        status.innerHTML = `Couldn’t load live projects (GitHub may be rate-limiting unauthenticated requests — that resets hourly). ` +
+          `View them directly on <a href="https://github.com/${CONFIG.username}" target="_blank" rel="noopener">GitHub ↗</a>.`;
+      }
+    }
+    loadGitHub();
+  </script>
+</body>
+
+</html>

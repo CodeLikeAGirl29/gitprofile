@@ -1,3 +1,45 @@
-h1, p {
-  font-family: Lato;
+/* Brand typography to match the studio site.
+   Imported by App.js AFTER the GitProfile stylesheet so these win. */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&display=swap');
+
+:root {
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-body: 'Hanken Grotesk', system-ui, sans-serif;
+}
+
+body,
+p,
+li,
+span,
+a,
+button,
+input,
+textarea,
+.card,
+.card-body {
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.card-title {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* A touch more polish: smoother card hover and crisper text */
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
 }
